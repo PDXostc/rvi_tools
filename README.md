@@ -12,6 +12,6 @@ For details on RVI consult the documentation in the
 
 Follow the links to the various RVI tools:
 
-[Data Collector](https://github.com/PDXostc/rvitools/datacollector) 
+[Data Collector](https://github.com/PDXostc/rvitools/tree/master/datacollector) 
 
 
