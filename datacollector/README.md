@@ -89,3 +89,9 @@ TODO
    main thread currently reads from the internal message queue and publishes to the
    various sinks. It should be possible to create multiple threads for sinks such
    as the RVI sink to stress test the sink.
+   
+3. OBD-II Source
+
+    We need a source to read data from OBD-II and send it to the various sinks.
+    The idea would be to use the Python obd module and an off-the-shell USB or
+    Bluetooth OBD adapter.
