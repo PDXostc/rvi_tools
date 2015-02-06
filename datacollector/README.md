@@ -17,12 +17,12 @@ Currently we have these data sources:
 
 1. GPS Data Source
 
-        Data source that reads location information from a GPS receiver via
-        gpsd.
+   Data source that reads location information from a GPS receiver via
+   gpsd.
         
 2. File Data Source
  
-        Data source that reads location information from one or more files.
+   Data source that reads location information from one or more files.
         
 Data Sinks
 ----------
@@ -31,16 +31,16 @@ The data sinks are:
 
 1. Database Sink
 
-        Publishes data received from the data sources to a local SQLite database.
+   Publishes data received from the data sources to a local SQLite database.
         
 2. Message Queue Sink
 
-        Publishes data received from the data sources to an Apache Kafka message
-        queue which can be local or remote.
+   Publishes data received from the data sources to an Apache Kafka message
+   queue which can be local or remote.
         
 3. RVI Sink
 
-        Publishes data received from the data sources to RVI.
+   Publishes data received from the data sources to RVI.
         
 Running
 -------
@@ -72,6 +72,20 @@ Configuration
 ------------- 
    
 Configuration of the DC is accomplished by modifying the file settings.py.
-(TODO: To enable multiple DC to be able to run with different configuration we
+
+
+TODO
+----
+
+1. Multiple Invocation
+
+To enable multiple DC to be able to run with different configuration we
 need to add to specify the settings module on the command line.)
 
+2. Multi-threaded Sinks
+
+Sources run in their own threads and the file source can even have multiple
+threads on its own to publish to the internal message queue. However, only the
+main thread currently reads from the internal message queue and publishes to the
+various sinks. It should be possible to create multiple threads for sinks such
+as the RVI sink to stress test the sink.
