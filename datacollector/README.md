@@ -79,13 +79,13 @@ TODO
 
 1. Multiple Invocation
 
-To enable multiple DC to be able to run with different configuration we
-need to add to specify the settings module on the command line.)
+   To enable multiple DC to be able to run with different configuration we 
+   need to add to specify the settings module on the command line.
 
 2. Multi-threaded Sinks
 
-Sources run in their own threads and the file source can even have multiple
-threads on its own to publish to the internal message queue. However, only the
-main thread currently reads from the internal message queue and publishes to the
-various sinks. It should be possible to create multiple threads for sinks such
-as the RVI sink to stress test the sink.
+   Sources run in their own threads and the file source can even have multiple
+   threads on its own to publish to the internal message queue. However, only the
+   main thread currently reads from the internal message queue and publishes to the
+   various sinks. It should be possible to create multiple threads for sinks such
+   as the RVI sink to stress test the sink.
