@@ -21,8 +21,6 @@ import os
 import time
 import logging
 
-import django
-
 from signal import *
 from Queue import Queue
 
@@ -155,7 +153,7 @@ if __name__ == "__main__":
         elif opt in ("-p", "--pidfile"):
             pid_file = arg
 
-    data_collector = DataCollector(pid_file, stdin='/dev/null', stdout='/dev/null', stderr='/dev/null')
+    data_collector = DataCollector(pid_file, stdin='/dev/null', stdout='/dev/stdout', stderr='/dev/stderr')
 
     if len(sys.argv) >= 2:
         if sys.argv[1] in ('foreground', 'fg'):

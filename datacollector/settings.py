@@ -71,21 +71,21 @@ TRACKING_GPS_INTERVAL = 5
 # File Source
 # Enable/Disable the File Source
 TRACKING_FILE_ENABLE = True
-# Polling Interval for the File Source
+# Polling Interval for the File Source (in seconds, can be a fraction)
 TRACKING_FILE_INTERVAL = 1
 # Path to data files, can have wildcards for multiple files
 # For each file an independent File Source will be spawned
-TRACKING_FILE_NAME = '../../testdata/cabspottingdata/new_aj*'
+TRACKING_FILE_NAME = '../testdata/cabspottingdata/new_aj*'
 
 # Database Sink
 # Enable/Disable the Database Sink
-RVI_TRACKING_DB_PUBLISH = True
+TRACKING_DB_PUBLISH = False
 # Name of the SQLite database file
-RVI_TRACKING_DB_NAME = "rvidata.db"
+TRACKING_DB_NAME = "../rvidata.db"
 
 # RVI Sink
 # Enable/Disbale the RVI Sink
-TRACKING_RVI_PUBLISH = True
+TRACKING_RVI_PUBLISH = False
 # RVI Node to connect to (can be local or remote)
 TRACKING_RVI_NODE_URL = 'http://127.0.0.1:8801'
 # RVI Node to send data to
@@ -95,7 +95,8 @@ TRACKING_RVI_BACKEND_ID = 'jlr.com/backend'
 # Enable/Disable Message Queue Sink
 TRACKING_MQ_PUBLISH = True
 # Kafka URL (can be local or remote)
-TRACKING_MQ_URL = "localhost:9092"
+# TRACKING_MQ_URL = "localhost:9092"
+TRACKING_MQ_URL = "192.168.100.144:9092"
 # Kafka topic to publish messages to
 TRACKING_MQ_TOPIC = "rvi"
 
