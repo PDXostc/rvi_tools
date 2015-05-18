@@ -44,7 +44,7 @@ class FileSource(threading.Thread):
             f = open(self.filepath, 'r')
         except IOError as e:
             self.logger.info("%s: Cannot open file: %s", self.__class__.__name__, self.filepath)
-            return -1
+            return False
             
         filename = os.path.basename(self.filepath).split('.')[0]
         columns = self.conf['TRACKING_FILE_COLUMNS'].split(self.conf['TRACKING_FILE_DELIMITER'])
@@ -57,16 +57,18 @@ class FileSource(threading.Thread):
                 u'vin' : filename,
                 u'data' : [
                         { 'channel' : 'location', 'value' : {'lat' : fields[0], 'lon' : fields[1], 'alt' : 0} },
+                        { 'channel' : 'occupancy', 'value' : fields[2] },
                     ]
                 }
             self.queue.put(report)
             
-        return 0
+        return False
             
         
     def run(self):
-        while True:
-            self.process_file()
+        run = True
+        while run:
+            run = self.process_file()
             
             
 class FileSources(object):
