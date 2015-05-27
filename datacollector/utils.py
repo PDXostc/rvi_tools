@@ -38,6 +38,9 @@ def get_settings():
         conf['TRACKING_GPS_ENABLE']   = get_setting("TRACKING_GPS_ENABLE", True)
         conf['TRACKING_GPS_INTERVAL'] = get_setting("TRACKING_GPS_INTERVAL", 5)
 
+        conf['TRACKING_MUNICBOX_ENABLE'] = get_setting("TRACKING_MUNICBOX_ENABLE", True)
+        conf['TRACKING_MUNICBOX_URL']    = get_setting("TRACKING_MUNICBOX_URL", "localhost:8080")
+
         conf['TRACKING_FILE_ENABLE']    = get_setting("TRACKING_FILE_ENABLE", True)
         conf['TRACKING_FILE_INTERVAL']  = get_setting("TRACKING_FILE_INTERVAL", 5)
         conf['TRACKING_FILE_NAME']      = get_setting("TRACKING_FILE_NAME")
