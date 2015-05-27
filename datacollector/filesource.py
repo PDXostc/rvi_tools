@@ -76,11 +76,11 @@ class FileSources(object):
     Get data samples from multiple files using FileSource
     """
     
-    def __init__(self, conf, logger, queue, filepath):
+    def __init__(self, conf, logger, queue):
         self.conf = conf
         self.logger = logger
         self.queue = queue
-        self.filepath = filepath
+        self.filepath = conf['TRACKING_FILE_NAME']
         self.sources = {}
 
     def start(self):

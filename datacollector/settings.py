@@ -77,6 +77,12 @@ TRACKING_FILE_INTERVAL = 0.01
 # For each file an independent File Source will be spawned
 TRACKING_FILE_NAME = '../../testdata/cabspottingdata/new_a*'
 
+# Munic.box Source
+# Enable/Disable the Munic.box Source
+TRACKING_MUNICBOX_ENABLE = True
+# URL to listen on <host>:<port>, use 0.0.0.0 for all interfaces
+TRACKING_MUNICBOX_URL = '0.0.0.0:8080'
+
 # Database Sink
 # Enable/Disable the Database Sink
 TRACKING_DB_PUBLISH = False

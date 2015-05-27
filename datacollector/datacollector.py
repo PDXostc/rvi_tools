@@ -31,6 +31,7 @@ from mqsink import MQSink
 from rvisink import RVISink
 from gpssource import GPSSource
 from filesource import FileSource, FileSources
+from municsource import MunicSource
 
 import __init__
 from __init__ import __TOOLS_LOGGER__ as logger
@@ -48,6 +49,7 @@ class DataCollector(Daemon):
         self.queue = Queue()
         self.gps_source = None
         self.file_source = None
+        self.munic_source = None
 
     def run(self):
         # Execution starts here
@@ -65,8 +67,14 @@ class DataCollector(Daemon):
         # setup file source
         if conf['TRACKING_FILE_ENABLE'] == True:
             logger.info('%s: File Source enabled.', self.__class__.__name__)
-            self.file_source = FileSources(conf, logger, self.queue, conf['TRACKING_FILE_NAME'])
+            self.file_source = FileSources(conf, logger, self.queue)
             self.file_source.start()
+
+        # setup municbox source
+        if conf['TRACKING_MUNICBOX_ENABLE'] == True:
+            logger.info('%s: Munic.Box Source enabled.', self.__class__.__name__)
+            self.munic_source = MunicSource(conf, logger, self.queue)
+            self.munic_source.start()
 
         # setup database sink
         if conf['TRACKING_DB_PUBLISH'] == True:
@@ -129,6 +137,8 @@ class DataCollector(Daemon):
             self.gps_source.shutdown()
         if self.file_source:
             self.file_source.shutdown()
+        if self.munic_source:
+            self.munic_source.shutdown()
         sys.exit(0)
 
 
