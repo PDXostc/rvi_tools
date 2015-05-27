@@ -106,6 +106,7 @@ class HTTPMethodHandler(BaseHTTPRequestHandler):
                 if 'GPS_SPEED' in fields:
                     # Munic.Box measures GPS speed in 1/1000 knots (1 knot = 1.852 km/hr)
                     report['data'].append({ 'channel' : 'gps_speed', 'value' : Base64Decoder.decodeInteger(fields['GPS_SPEED']['b64_value']) * 0.001852})
+                    report['data'].append({ 'channel' : 'speed', 'value' : Base64Decoder.decodeInteger(fields['GPS_SPEED']['b64_value']) * 0.001852})
                 if 'MDI_OBD_SPEED' in fields:
                     # OBD speed
                     report['data'].append({ 'channel' : 'obd_speed', 'value' : Base64Decoder.decodeInteger(fields['MDI_OBD_SPEED']['b64_value'])})
@@ -117,7 +118,7 @@ class HTTPMethodHandler(BaseHTTPRequestHandler):
                     report['data'].append({ 'channel' : 'obd_vin', 'value' : Base64Decoder.decodeString(fields['MDI_OBD_VIN']['b64_value'])})
                 if 'GPS_DIR' in fields:
                     # Heading in 1/100 degrees
-                    report['data'].append({ 'channel' : 'heading', 'value' : Base64Decoder.decodeInteger(fields['GPS_DIR']['b64_value']) * 0.01})
+                    report['data'].append({ 'channel' : 'track', 'value' : Base64Decoder.decodeInteger(fields['GPS_DIR']['b64_value']) * 0.01})
                 if 'DIO_IGNITION' in fields:
                     # Ignition status
                     report['data'].append({ 'channel' : 'ignition', 'value' : Base64Decoder.decodeBoolean(fields['DIO_IGNITION']['b64_value'])})
